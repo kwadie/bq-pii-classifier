@@ -21,6 +21,7 @@ public class BigQueryScannerImpl implements Scanner {
     public List<String> listTables(String projectId, String datasetId) {
         return StreamSupport.stream(bqService.listTables(DatasetId.of(projectId, datasetId)).iterateAll().spliterator(),
                 false)
+                .filter(t -> t.getDefinition().getType().equals(TableDefinition.Type.TABLE))
                 .map(t -> String.format("%s.%s.%s", projectId, datasetId, t.getTableId().getTable()))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
