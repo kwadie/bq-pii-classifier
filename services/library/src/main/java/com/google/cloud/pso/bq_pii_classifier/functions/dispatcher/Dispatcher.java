@@ -1,13 +1,17 @@
 package com.google.cloud.pso.bq_pii_classifier.functions.dispatcher;
 
+import com.google.cloud.pso.bq_pii_classifier.entities.NonRetryableApplicationException;
 import com.google.cloud.pso.bq_pii_classifier.entities.TableOperationRequest;
 import com.google.cloud.pso.bq_pii_classifier.entities.TableSpec;
 import com.google.cloud.pso.bq_pii_classifier.helpers.LoggingHelper;
-import com.google.cloud.pso.bq_pii_classifier.entities.NonRetryableApplicationException;
 import com.google.cloud.pso.bq_pii_classifier.helpers.TrackingHelper;
 import com.google.cloud.pso.bq_pii_classifier.helpers.Utils;
-import com.google.cloud.pso.bq_pii_classifier.services.*;
-
+import com.google.cloud.pso.bq_pii_classifier.services.BigQueryService;
+import com.google.cloud.pso.bq_pii_classifier.services.PubSubPublishResults;
+import com.google.cloud.pso.bq_pii_classifier.services.PubSubService;
+import com.google.cloud.pso.bq_pii_classifier.services.Scanner;
+import com.google.cloud.pso.bq_pii_classifier.services.TableOpsRequestFailedPubSubMessage;
+import com.google.cloud.pso.bq_pii_classifier.services.TableOpsRequestSuccessPubSubMessage;
 
 import java.io.IOException;
 import java.util.ArrayList;

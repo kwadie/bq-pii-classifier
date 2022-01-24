@@ -1,14 +1,9 @@
 package com.google.cloud.pso.bq_pii_classifier.functions.helpers;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import org.junit.Test;
-import static org.junit.Assert.*;
 import com.google.cloud.pso.bq_pii_classifier.helpers.Utils;
+import org.junit.Test;
 
-import java.util.Map;
-import java.util.SortedMap;
+import static org.junit.Assert.assertEquals;
 
 public class UtilsTest {
 

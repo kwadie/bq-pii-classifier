@@ -1,13 +1,13 @@
 package com.google.cloud.pso.bq_pii_classifier.services;
 
 import com.google.api.services.bigquery.model.TableFieldSchema;
-import com.google.cloud.bigquery.*;
+import com.google.cloud.bigquery.Job;
+import com.google.cloud.bigquery.TableResult;
 import com.google.cloud.pso.bq_pii_classifier.entities.TableSpec;
 
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.List;
-import java.util.stream.Stream;
 
 public interface BigQueryService {
     String getDatasetLocation(String projectId, String datasetId) throws IOException;

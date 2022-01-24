@@ -10,7 +10,10 @@ import com.google.cloud.pso.bq_pii_classifier.entities.NonRetryableApplicationEx
 import com.google.cloud.pso.bq_pii_classifier.entities.PubSubEvent;
 import com.google.cloud.pso.bq_pii_classifier.helpers.TrackingHelper;
 import com.google.cloud.pso.bq_pii_classifier.helpers.Utils;
-import com.google.cloud.pso.bq_pii_classifier.services.*;
+import com.google.cloud.pso.bq_pii_classifier.services.DlpService;
+import com.google.cloud.pso.bq_pii_classifier.services.DlpServiceImpl;
+import com.google.cloud.pso.bq_pii_classifier.services.PubSubService;
+import com.google.cloud.pso.bq_pii_classifier.services.PubSubServiceImpl;
 import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import org.springframework.boot.SpringApplication;

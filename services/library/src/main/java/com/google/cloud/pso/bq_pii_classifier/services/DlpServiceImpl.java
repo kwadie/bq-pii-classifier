@@ -1,7 +1,9 @@
 package com.google.cloud.pso.bq_pii_classifier.services;
 
 import com.google.cloud.dlp.v2.DlpServiceClient;
-import com.google.privacy.dlp.v2.*;
+import com.google.privacy.dlp.v2.BigQueryTable;
+import com.google.privacy.dlp.v2.CreateDlpJobRequest;
+import com.google.privacy.dlp.v2.DlpJob;
 
 import java.io.IOException;
 

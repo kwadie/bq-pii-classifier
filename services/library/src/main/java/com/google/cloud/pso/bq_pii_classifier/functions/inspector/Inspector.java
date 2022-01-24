@@ -4,15 +4,22 @@ package com.google.cloud.pso.bq_pii_classifier.functions.inspector;
 import com.google.cloud.pso.bq_pii_classifier.entities.TableOperationRequest;
 import com.google.cloud.pso.bq_pii_classifier.entities.TableScanLimitsConfig;
 import com.google.cloud.pso.bq_pii_classifier.entities.TableSpec;
-import com.google.cloud.pso.bq_pii_classifier.functions.tagger.Tagger;
 import com.google.cloud.pso.bq_pii_classifier.helpers.LoggingHelper;
-import com.google.cloud.pso.bq_pii_classifier.helpers.Utils;
 import com.google.cloud.pso.bq_pii_classifier.services.BigQueryService;
 import com.google.cloud.pso.bq_pii_classifier.services.DlpService;
-import com.google.privacy.dlp.v2.*;
+import com.google.privacy.dlp.v2.Action;
+import com.google.privacy.dlp.v2.BigQueryOptions;
+import com.google.privacy.dlp.v2.BigQueryTable;
+import com.google.privacy.dlp.v2.CreateDlpJobRequest;
+import com.google.privacy.dlp.v2.DlpJob;
+import com.google.privacy.dlp.v2.InspectConfig;
+import com.google.privacy.dlp.v2.InspectJobConfig;
+import com.google.privacy.dlp.v2.Likelihood;
+import com.google.privacy.dlp.v2.LocationName;
+import com.google.privacy.dlp.v2.OutputStorageConfig;
+import com.google.privacy.dlp.v2.StorageConfig;
 
 import java.io.IOException;
-import java.util.List;
 
 public class Inspector {
 

@@ -1,9 +1,14 @@
 package com.google.cloud.pso.bq_pii_classifier.functions.dispatcher;
 
 
-import com.google.cloud.pso.bq_pii_classifier.entities.TableOperationRequest;
 import com.google.cloud.pso.bq_pii_classifier.entities.NonRetryableApplicationException;
-import com.google.cloud.pso.bq_pii_classifier.services.*;
+import com.google.cloud.pso.bq_pii_classifier.entities.TableOperationRequest;
+import com.google.cloud.pso.bq_pii_classifier.services.BigQueryServiceImpl;
+import com.google.cloud.pso.bq_pii_classifier.services.DlpResultsScannerImpl;
+import com.google.cloud.pso.bq_pii_classifier.services.PubSubPublishResults;
+import com.google.cloud.pso.bq_pii_classifier.services.PubSubServiceImpl;
+import com.google.cloud.pso.bq_pii_classifier.services.TableOpsRequestFailedPubSubMessage;
+import com.google.cloud.pso.bq_pii_classifier.services.TableOpsRequestSuccessPubSubMessage;
 import com.google.common.collect.Lists;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,17 +17,17 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.io.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.lenient;
+import static org.mockito.Mockito.mock;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DispatcherTest {

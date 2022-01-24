@@ -1,16 +1,12 @@
 package com.google.cloud.pso.bq_pii_classifier.functions.dispatcher;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 import org.junit.Test;
-import static org.junit.Assert.*;
-
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Map;
-import java.util.SortedMap;
+
+import static org.junit.Assert.assertEquals;
 
 public class BigQueryScopeTest {
 

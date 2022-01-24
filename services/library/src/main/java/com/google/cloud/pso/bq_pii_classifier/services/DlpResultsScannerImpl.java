@@ -2,7 +2,6 @@ package com.google.cloud.pso.bq_pii_classifier.services;
 
 import com.google.cloud.bigquery.FieldValueList;
 import com.google.cloud.bigquery.Job;
-import com.google.cloud.bigquery.QueryJobConfiguration;
 import com.google.cloud.bigquery.TableResult;
 import com.google.cloud.pso.bq_pii_classifier.entities.NonRetryableApplicationException;
 

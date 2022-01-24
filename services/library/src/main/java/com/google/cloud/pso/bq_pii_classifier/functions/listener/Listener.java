@@ -5,7 +5,11 @@ import com.google.cloud.pso.bq_pii_classifier.entities.TableOperationRequest;
 import com.google.cloud.pso.bq_pii_classifier.entities.TableSpec;
 import com.google.cloud.pso.bq_pii_classifier.helpers.LoggingHelper;
 import com.google.cloud.pso.bq_pii_classifier.helpers.TrackingHelper;
-import com.google.cloud.pso.bq_pii_classifier.services.*;
+import com.google.cloud.pso.bq_pii_classifier.services.DlpService;
+import com.google.cloud.pso.bq_pii_classifier.services.PubSubPublishResults;
+import com.google.cloud.pso.bq_pii_classifier.services.PubSubService;
+import com.google.cloud.pso.bq_pii_classifier.services.TableOpsRequestFailedPubSubMessage;
+import com.google.cloud.pso.bq_pii_classifier.services.TableOpsRequestSuccessPubSubMessage;
 import com.google.privacy.dlp.v2.BigQueryTable;
 import com.google.privacy.dlp.v2.DlpJob;
 

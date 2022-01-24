@@ -1,7 +1,5 @@
 package com.google.cloud.pso.bq_pii_classifier.helpers;
 
-import static net.logstash.logback.argument.StructuredArguments.kv;
-
 import com.google.cloud.pso.bq_pii_classifier.entities.ApplicationLog;
 import com.google.cloud.pso.bq_pii_classifier.entities.FunctionLifeCycleEvent;
 import com.google.cloud.pso.bq_pii_classifier.entities.TagHistoryLogEntry;
@@ -11,6 +9,8 @@ import org.slf4j.event.Level;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
+
+import static net.logstash.logback.argument.StructuredArguments.kv;
 
 public class LoggingHelper {
 

@@ -1,6 +1,9 @@
 package com.google.cloud.pso.bq_pii_classifier.services;
 
-import com.google.cloud.bigquery.*;
+import com.google.cloud.bigquery.BigQuery;
+import com.google.cloud.bigquery.BigQueryOptions;
+import com.google.cloud.bigquery.DatasetId;
+import com.google.cloud.bigquery.TableDefinition;
 
 import java.io.IOException;
 import java.util.ArrayList;

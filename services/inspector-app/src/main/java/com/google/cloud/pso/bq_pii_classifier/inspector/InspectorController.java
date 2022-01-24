@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Base64;
 
 import com.google.cloud.pso.bq_pii_classifier.functions.tagger.Tagger;
 

@@ -3,21 +3,14 @@ package com.google.cloud.pso.bq_pii_classifier.functions.helpers;
 import com.google.api.gax.rpc.ApiException;
 import com.google.api.gax.rpc.ResourceExhaustedException;
 import com.google.api.gax.rpc.StatusCode;
-import com.google.cloud.bigquery.BigQueryException;
 import com.google.cloud.pso.bq_pii_classifier.helpers.ControllerExceptionHelper;
 import com.google.cloud.pso.bq_pii_classifier.helpers.LoggingHelper;
-import com.google.cloud.pso.bq_pii_classifier.helpers.Utils;
-import com.google.common.collect.Sets;
-import com.google.rpc.Code;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import javax.net.ssl.SSLException;
-import java.io.IOException;
-import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
