@@ -1,13 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
 
 # use FIFOs as semaphores and use them to ensure that new processes are spawned as soon as possible and that no more than N processes runs at the same time. But it requires more code.
 
 task(){
 
-   [[ ${#1} < 10 ]] && SUFFIX="0${1}" || SUFFIX="$1"
+   [[ ${#1} -lt 10 ]] && SUFFIX="0${1}" || SUFFIX="$1"
    echo  "${DESTINATION_TABLE_SPEC_PREFIX}_${SUFFIX}"
-   bq cp --force $ORIGIN_TABLE_SPEC "${DESTINATION_TABLE_SPEC_PREFIX}_${SUFFIX}";
+   bq cp --force "${ORIGIN_TABLE_SPEC}" "${DESTINATION_TABLE_SPEC_PREFIX}_${SUFFIX}";
 }
 
 N=50

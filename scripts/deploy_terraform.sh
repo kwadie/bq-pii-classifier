@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # exit script when errors occur
 set -e
@@ -12,6 +12,6 @@ terraform init \
     -backend-config="bucket=${BUCKET_NAME}" \
     -backend-config="prefix=terraform-state"
 
-terraform workspace select $CONFIG
+terraform workspace select "${CONFIG}"
 
-terraform apply -lock=false -var-file=$VARS -auto-approve
+terraform apply -lock=false -var-file="${VARS}" -auto-approve
