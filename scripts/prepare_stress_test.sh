@@ -1,4 +1,4 @@
-
+#!/bin/sh
 
 
 # use FIFOs as semaphores and use them to ensure that new processes are spawned as soon as possible and that no more than N processes runs at the same time. But it requires more code.

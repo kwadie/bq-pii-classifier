@@ -1,3 +1,4 @@
+#!/bin/sh
 
 # exit script when errors occur
 set -e

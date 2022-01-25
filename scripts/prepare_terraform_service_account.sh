@@ -1,3 +1,5 @@
+#!/bin/sh
+
 gcloud iam service-accounts create $TF_SA \
     --description="Used by Terraform to deploy GCP resources" \
     --display-name="Terraform Service Account"

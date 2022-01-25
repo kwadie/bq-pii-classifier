@@ -1,4 +1,4 @@
-
+#!/bin/sh
 
 echo "Setting access for TAGGING_DISPATCHER service account.. "
 
