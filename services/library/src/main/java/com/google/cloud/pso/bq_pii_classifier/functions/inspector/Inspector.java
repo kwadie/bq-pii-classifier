@@ -21,6 +21,7 @@ import com.google.cloud.pso.bq_pii_classifier.entities.TableOperationRequest;
 import com.google.cloud.pso.bq_pii_classifier.entities.TableScanLimitsConfig;
 import com.google.cloud.pso.bq_pii_classifier.entities.TableSpec;
 import com.google.cloud.pso.bq_pii_classifier.helpers.LoggingHelper;
+import com.google.cloud.pso.bq_pii_classifier.helpers.TrackingHelper;
 import com.google.cloud.pso.bq_pii_classifier.services.BigQueryService;
 import com.google.cloud.pso.bq_pii_classifier.services.DlpService;
 import com.google.privacy.dlp.v2.Action;
@@ -36,6 +37,7 @@ import com.google.privacy.dlp.v2.OutputStorageConfig;
 import com.google.privacy.dlp.v2.StorageConfig;
 
 import java.io.IOException;
+import java.util.UUID;
 
 public class Inspector {
 
@@ -86,8 +88,13 @@ public class Inspector {
                 config
         );
 
+        // Construct a jobId with the runId as a prefix.
+        // We don't use the trackingId as jobId to align with the jobId naming requirements
+        String runId = TrackingHelper.parseRunIdAsPrefix(trackingId);
+        String jobId = String.format("%s-%s", runId, UUID.randomUUID());
+
         CreateDlpJobRequest createDlpJobRequest = CreateDlpJobRequest.newBuilder()
-                .setJobId(trackingId) // Letters, numbers, hyphens, and underscores allowed.
+                .setJobId(jobId) // Letters, numbers, hyphens, and underscores allowed.
                 .setParent(LocationName.of(config.getProjectId(), config.getRegionId()).toString())
                 .setInspectJob(jobConfig)
                 .build();
