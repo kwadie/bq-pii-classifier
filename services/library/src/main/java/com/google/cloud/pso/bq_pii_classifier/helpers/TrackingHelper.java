@@ -55,9 +55,4 @@ public class TrackingHelper {
         return  splits[splits.length-1].substring(2);
     }
 
-    public static String extractRunIdFromJobName(String jobName){
-        String trackingId = extractTrackingIdFromJobName(jobName);
-        return trackingId.split("-")[0];
-    }
-
 }
