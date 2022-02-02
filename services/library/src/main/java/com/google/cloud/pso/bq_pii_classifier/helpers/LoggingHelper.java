@@ -18,6 +18,7 @@ package com.google.cloud.pso.bq_pii_classifier.helpers;
 
 import com.google.cloud.pso.bq_pii_classifier.entities.ApplicationLog;
 import com.google.cloud.pso.bq_pii_classifier.entities.FunctionLifeCycleEvent;
+import com.google.cloud.pso.bq_pii_classifier.entities.TableSpec;
 import com.google.cloud.pso.bq_pii_classifier.entities.TagHistoryLogEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -85,10 +86,14 @@ public class LoggingHelper {
 
     }
 
-    public void logSuccessDispatcherTrackingId(String trackingId, String dispatchedTrackingId) {
+    public void logSuccessDispatcherTrackingId(String trackingId, String dispatchedTrackingId, TableSpec tableSpec) {
 
         Object [] attributes = new Object[]{
                 kv("dispatched_tracking_id", dispatchedTrackingId),
+                kv("dispatched_tablespec", tableSpec.toSqlString()),
+                kv("dispatched_tablespec_project", tableSpec.getProject()),
+                kv("dispatched_tablespec_dataset", tableSpec.getDataset()),
+                kv("dispatched_tablespec_table", tableSpec.getTable()),
         };
 
         logWithTracker(

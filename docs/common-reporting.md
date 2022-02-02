@@ -65,3 +65,24 @@ SELECT * FROM bq_security_classifier.v_service_calls
 WHERE run_id = last_run_id
 ORDER BY inspector_starts DESC
 ```
+
+### Tracking-Id mapping
+Tracking Ids are created by the dispatcher (the first step of
+processing) for every table request to track its progress
+across the entire solution (e.g. inspection, tagging, etc). They are randomly generated UUID.  
+
+Most views will show the tracking_id which on its own not very indicative
+of which table request. However, there is a mapping view `v_tracking_id_to_table_map`
+that contains the mapping between tracking ids and tables. It could be
+used as in the following example:
+```
+SELECT 
+s.*,
+m.tablespec,
+m.project_id,
+m.dataset_id,
+m.table_id
+FROM `bq_security_classifier.v_run_summary` s
+LEFT JOIN `bq_security_classifier.v_tracking_id_to_table_map` m ON s.tracking_id = m.tracking_id
+WHERE s.run_id = '1643760012003-I'
+```

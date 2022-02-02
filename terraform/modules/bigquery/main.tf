@@ -259,6 +259,24 @@ resource "google_bigquery_table" "view_errors_retryable" {
   }
 }
 
+resource "google_bigquery_table" "view_tracking_id_map" {
+  dataset_id = google_bigquery_dataset.results_dataset.dataset_id
+  table_id = "v_tracking_id_to_table_map"
+
+  deletion_protection = false
+
+  view {
+    use_legacy_sql = false
+    query = templatefile("modules/bigquery/views/v_tracking_id_to_table_map.tpl",
+    {
+      project = var.project
+      dataset = var.dataset
+      logging_table = google_bigquery_table.logging_table.table_id
+    }
+    )
+  }
+}
+
 ######## CONFIG VIEWS #####################################################################
 
 locals {

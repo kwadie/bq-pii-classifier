@@ -134,7 +134,8 @@ public class Dispatcher {
 
         for(TableOpsRequestSuccessPubSubMessage msg: publishResults.getSuccessMessages()){
             // this enable us to detect dispatched messages within a runId that fail in later stages (i.e. Tagger)
-            logger.logSuccessDispatcherTrackingId(runId, msg.getMsg().getTrackingId());
+            TableSpec tableSpec = TableSpec.fromSqlString(msg.getMsg().getTableSpec());
+            logger.logSuccessDispatcherTrackingId(runId, msg.getMsg().getTrackingId(), tableSpec);
         }
 
         logger.logFunctionEnd(runId);
@@ -150,7 +151,7 @@ public class Dispatcher {
             try {
                 if (!tableExcludeList.contains(table)) {
 
-                    String trackingId = TrackingHelper.generateTrackingId(runId, TableSpec.fromSqlString(table));
+                    String trackingId = TrackingHelper.generateTrackingId(runId);
 
                     TableOperationRequest tableOperationRequest = new TableOperationRequest(table, runId, trackingId);
 

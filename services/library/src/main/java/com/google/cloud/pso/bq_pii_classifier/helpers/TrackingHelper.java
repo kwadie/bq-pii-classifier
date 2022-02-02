@@ -18,6 +18,8 @@ package com.google.cloud.pso.bq_pii_classifier.helpers;
 
 import com.google.cloud.pso.bq_pii_classifier.entities.TableSpec;
 
+import java.util.UUID;
+
 public class TrackingHelper {
 
     private static final String taggingRunSuffix = "-T";
@@ -41,8 +43,9 @@ public class TrackingHelper {
         return str.substring(0, (13 + suffixLength));
     }
 
-    public static String generateTrackingId (String runId, TableSpec tableSpec){
-        return String.format("%s-%s-%s-%s", runId, tableSpec.getProject(), tableSpec.getDataset(), tableSpec.getTable());
+    public static String generateTrackingId (String runId){
+        ;
+        return String.format("%s-%s", runId, UUID.randomUUID().toString());
     }
 
     /**
