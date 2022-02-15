@@ -17,6 +17,7 @@
 package com.google.cloud.pso.bq_pii_classifier.helpers;
 
 import com.google.cloud.pso.bq_pii_classifier.entities.TableSpec;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.UUID;
 
@@ -43,9 +44,12 @@ public class TrackingHelper {
         return str.substring(0, (13 + suffixLength));
     }
 
-    public static String generateTrackingId (String runId){
-        ;
-        return String.format("%s-%s", runId, UUID.randomUUID().toString());
+    public static String generateTrackingId (String runId, String table){
+
+        // using UUIDs only resulted in unexpected collisions in some runs.
+        // adding table name hash for extra "randomness"
+
+        return String.format("%s-%s-%s", runId, UUID.randomUUID().toString(), table.hashCode());
     }
 
     /**
